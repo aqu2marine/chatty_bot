@@ -1,0 +1,47 @@
+import math
+print('What do you want to calculate?')
+print('type "n" for number of monthly payments,')
+print('type "a" for annuity monthly payment amount,')
+print('type "p" for the monthly payment')
+letter = input()
+if letter == 'n':
+    print("Enter the loan principal:")
+    loan = int(input())
+    print('Enter the monthly payment:')
+    monpay = int(input())
+    print("Enter the loan interest:")
+    loanint = float(input())
+    i = loanint /(100 * 12)
+    x = monpay / (monpay - (i * loan))
+    base = 1 + i
+    n = math.ceil(math.log(x, base))
+    if n == 1:
+        print('It will take 1 month to repay the loan')
+    elif n < 12:
+        print('It will take' + str(pay) + ' months to repay the loan!')
+    else: 
+        a = n // 12
+        b = n - (a*12)
+        print('It will take' + str(a) + ' years' + str(b) + 'months to repay the loan!')
+        
+elif letter == 'a':
+    print("Enter the loan principal:")
+    loanpr = int(input())
+    print("Enter the number of periods:")
+    numper = int(input())
+    print("Enter the loan interest:")
+    loaninter = float(input())
+    i = loaninter /(100 * 12)
+    c = math.ceil(loanpr * (i * (1 + i) ** numper) / ((1 + i)** numper - 1))
+    print("Your monthly payment = " + str(c) + "!")
+    
+else:
+    print("Enter the annuity payment:")
+    annpay = float(input())
+    print("Enter the number of periods:")
+    numberper = int(input())
+    print("Enter the loan interest:")
+    loaninterest = float(input())
+    i = loaninterest /(100 * 12)
+    p = annpay / ( (i * (1 + i) ** numberper) / ((1 + i) ** numberper - 1) )
+    print("Your loan principal = " + str(p) + "!")
